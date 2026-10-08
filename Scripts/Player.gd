@@ -16,9 +16,13 @@ func _physics_process(delta):
 	horizontal_movement()
 	#applies movement
 	move_and_slide() 
-	
+	var direction := Input.get_axis("ui_left", "ui_right")
 	if !is_attacking:
 		player_animation()
+		
+	if direction and velocity.y >=0.0:
+		var next_to_stair = not %DetectWall.is_colliding() and %DetectStair.is_colliding()
+		$AutoClimb.disabled = not next_to_stair
 	
 func horizontal_movement():
 	# if keys are pressed it will return 1 for ui_right, -1 for ui_left, and 0 for neither
@@ -47,6 +51,7 @@ func _input(event):
 	if event.is_action_pressed("ui_jump") and is_on_floor():
 		velocity.y = jump_height
 		$AnimatedSprite2D.play("jump")
+		$AutoClimb.disabled = true
 	
 	if is_climbing == true:
 		if event.is_action_pressed("ui_up"):

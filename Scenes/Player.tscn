@@ -1,18 +1,15 @@
 [gd_scene format=3 uid="uid://c8pgk3mvgsbv8"]
 
-[ext_resource type="Script" uid="uid://cbjpap2hd07gf" path="res://Scripts/Player.gd" id="1_megsn"]
+[ext_resource type="Script" uid="uid://cbjpap2hd07gf" path="res://Scripts/Player.gd" id="1_52ee3"]
 [ext_resource type="Texture2D" uid="uid://cmo1v8clc8l4m" path="res://Assets/Player/player_kick.png" id="2_ksbbd"]
 [ext_resource type="Texture2D" uid="uid://dnnb0fw430m6u" path="res://Assets/Player/player_duck.png" id="2_yoq75"]
 [ext_resource type="Texture2D" uid="uid://de0cs3w1siwn" path="res://Assets/Player/player_hurt.png" id="3_glx4g"]
 [ext_resource type="Texture2D" uid="uid://c6c420xirxibc" path="res://Assets/Player/player_fall.png" id="3_ksbbd"]
 [ext_resource type="Texture2D" uid="uid://dbtuv6ct8ihwq" path="res://Assets/Player/player_hang.png" id="3_miouo"]
-[ext_resource type="Texture2D" uid="uid://dx2qyfb3cy7hu" path="res://Assets/Player/player_idle.png" id="4_glx4g"]
-[ext_resource type="Texture2D" uid="uid://bwlntth4u6lb8" path="res://Assets/Player/player_jump.png" id="5_miouo"]
-[ext_resource type="Texture2D" uid="uid://dt5vo5ul61q1w" path="res://Assets/Player/player_walk1.png" id="8_arntx"]
-[ext_resource type="Texture2D" uid="uid://bsy56wxaush6d" path="res://Assets/Player/player_walk2.png" id="9_lslt6"]
+[ext_resource type="Texture2D" uid="uid://brqw80bfngp2m" path="res://Assets/Noel/Idle/Idle1.png" id="7_yoq75"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m1ghu"]
-size = Vector2(63, 95)
+size = Vector2(129, 261)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ulo2v"]
 animations = [{
@@ -58,7 +55,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_glx4g")
+"texture": ExtResource("7_yoq75")
 }],
 "loop": 1,
 "name": &"idle",
@@ -66,7 +63,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_miouo")
+"texture": ExtResource("7_yoq75")
 }],
 "loop": 1,
 "name": &"jump",
@@ -74,25 +71,52 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_arntx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_lslt6")
+"texture": ExtResource("7_yoq75")
 }],
 "loop": 1,
 "name": &"walk",
 "speed": 5.0
 }]
 
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_0ci4d"]
+length = 64.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1690861100]
-script = ExtResource("1_megsn")
+script = ExtResource("1_52ee3")
+jump_height = -110
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=163016382]
-position = Vector2(-0.5, 6.5)
+position = Vector2(-90.5, -157.5)
 shape = SubResource("RectangleShape2D_m1ghu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=359929321]
+position = Vector2(-87.5, -155.04385)
+scale = Vector2(0.4883041, 0.4883041)
 sprite_frames = SubResource("SpriteFrames_ulo2v")
-animation = &"idle"
+animation = &"walk"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1851636538]
+offset = Vector2(0, -240)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_bottom_margin = 0.0
+
+[node name="AutoClimb" type="CollisionShape2D" parent="." unique_id=841920668]
+position = Vector2(-85, -27)
+shape = SubResource("SeparationRayShape2D_0ci4d")
+
+[node name="StairChecker" type="Node2D" parent="." unique_id=158919631]
+
+[node name="DetectStair" type="RayCast2D" parent="StairChecker" unique_id=1692139581]
+unique_name_in_owner = true
+position = Vector2(-26, -62)
+exclude_parent = false
+target_position = Vector2(20, 0)
+
+[node name="DetectWall" type="RayCast2D" parent="StairChecker" unique_id=752471907]
+unique_name_in_owner = true
+position = Vector2(-26, -233)
+exclude_parent = false
+target_position = Vector2(20, 0)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
