@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://cav28ca2ci7q4"]
+
+[ext_resource type="Texture2D" uid="uid://dx70vr6rddpb0" path="res://Assets/Memory Puzzle/MemoryQuiz.png" id="1_4pu3e"]
+[ext_resource type="Script" uid="uid://b6l84gfnwnlkk" path="res://Scripts/MemoryBoard.gd" id="1_psile"]
+[ext_resource type="PackedScene" uid="uid://dint8tsvcdtb0" path="res://Scenes/Card.tscn" id="2_los5d"]
+[ext_resource type="Texture2D" uid="uid://bnxyn3l14xa8o" path="res://Assets/Memory Puzzle/O.png" id="3_iu845"]
+[ext_resource type="Texture2D" uid="uid://be8flvaij0t2h" path="res://Assets/Memory Puzzle/BackCard.png" id="3_knj2w"]
+[ext_resource type="Texture2D" uid="uid://dgvh3mrgkuy2h" path="res://Assets/Memory Puzzle/D.png" id="4_iew2b"]
+[ext_resource type="Texture2D" uid="uid://d3smsix7pq7cr" path="res://Assets/Memory Puzzle/I.png" id="5_psile"]
+[ext_resource type="Texture2D" uid="uid://bc4puleqvxabt" path="res://Assets/Memory Puzzle/T.png" id="6_wy14j"]
+[ext_resource type="Texture2D" uid="uid://cwuea7ir3dmyu" path="res://Assets/Memory Puzzle/S.png" id="7_maoh4"]
+[ext_resource type="Texture2D" uid="uid://cc703bpbiw6k6" path="res://Assets/Memory Puzzle/U.png" id="8_pprgi"]
+[ext_resource type="Texture2D" uid="uid://cb62y43kxhqrw" path="res://Assets/Memory Puzzle/E.png" id="9_w17l8"]
+[ext_resource type="Texture2D" uid="uid://qlyra2cpn6vo" path="res://Assets/Memory Puzzle/R.png" id="11_1ssbx"]
+
+[node name="Node2D" type="Node2D" unique_id=1179188413]
+script = ExtResource("1_psile")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1272156048]
+position = Vector2(600.1874, 324.87503)
+scale = Vector2(0.62853664, 0.62853664)
+texture = ExtResource("1_4pu3e")
+
+[node name="Card1" parent="." unique_id=1710407129 instance=ExtResource("2_los5d")]
+position = Vector2(343, 115)
+front_texture = ExtResource("3_iu845")
+back_texture = ExtResource("3_knj2w")
+
+[node name="Card2" parent="." unique_id=1872700145 instance=ExtResource("2_los5d")]
+position = Vector2(923, 583)
+pair_id = 4
+front_texture = ExtResource("5_psile")
+back_texture = ExtResource("3_knj2w")
+
+[node name="Card3" parent="." unique_id=108570765 instance=ExtResource("2_los5d")]
+position = Vector2(736, 586)
+pair_id = 1
+front_texture = ExtResource("6_wy14j")
+back_texture = ExtResource("3_knj2w")
+
+[node name="Card4" parent="." unique_id=1239612245 instance=ExtResource("2_los5d")]
+position = Vector2(541, 597)
+pair_id = 3
+front_texture = ExtResource("7_maoh4")
+back_texture = ExtResource("3_knj2w")
+
+[node name="Card5" parent="." unique_id=1045247259 instance=ExtResource("2_los5d")]
+position = Vector2(350, 592)
+pair_id = 7
+front_texture = ExtResource("8_pprgi")
+back_texture = ExtResource("3_knj2w")
+
+[node name="Card6" parent="." unique_id=1869248503 instance=ExtResource("2_los5d")]
+position = Vector2(921, 433)
+pair_id = 7
+front_texture = ExtResource("8_pprgi")
+back_texture = ExtResource("3_knj2w")
+
+[node name="Card7" parent="." unique_id=502443880 instance=ExtResource("2_los5d")]
+position = Vector2(731, 433)
+pair_id = 5
+front_texture = ExtResource("9_w17l8")
+back_texture = ExtResource("3_knj2w")
+
+[node name="Card8" parent="." unique_id=689841595 instance=ExtResource("2_los5d")]
+position = Vector2(537, 433)
+pair_id = 2
+front_texture = ExtResource("4_iew2b")
+back_texture = ExtResource("3_knj2w")
+
+[node name="Card9" parent="." unique_id=1434440152 instance=ExtResource("2_los5d")]
+position = Vector2(343, 432)
+pair_id = 6
+front_texture = ExtResource("11_1ssbx")
+back_texture = ExtResource("3_knj2w")
+
+[node name="Card10" parent="." unique_id=1389678149 instance=ExtResource("2_los5d")]
+position = Vector2(922, 271)
+pair_id = 6
+front_texture = ExtResource("11_1ssbx")
+back_texture = ExtResource("3_knj2w")
+
+[node name="Card11" parent="." unique_id=661571879 instance=ExtResource("2_los5d")]
+position = Vector2(727, 273)
+front_texture = ExtResource("3_iu845")
+back_texture = ExtResource("3_knj2w")
+
+[node name="Card12" parent="." unique_id=764517637 instance=ExtResource("2_los5d")]
+position = Vector2(343, 274)
+pair_id = 4
+front_texture = ExtResource("5_psile")
+back_texture = ExtResource("3_knj2w")
+
+[node name="Card13" parent="." unique_id=293065655 instance=ExtResource("2_los5d")]
+position = Vector2(538, 271)
+pair_id = 5
+front_texture = ExtResource("9_w17l8")
+back_texture = ExtResource("3_knj2w")
+
+[node name="Card14" parent="." unique_id=789161441 instance=ExtResource("2_los5d")]
+position = Vector2(919, 117)
+pair_id = 3
+front_texture = ExtResource("7_maoh4")
+back_texture = ExtResource("3_knj2w")
+
+[node name="Card15" parent="." unique_id=1174531009 instance=ExtResource("2_los5d")]
+position = Vector2(726, 116)
+pair_id = 2
+front_texture = ExtResource("4_iew2b")
+back_texture = ExtResource("3_knj2w")
+
+[node name="Card16" parent="." unique_id=459617787 instance=ExtResource("2_los5d")]
+position = Vector2(539, 113)
+pair_id = 1
+front_texture = ExtResource("6_wy14j")
+back_texture = ExtResource("3_knj2w")

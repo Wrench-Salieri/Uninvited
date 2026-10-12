@@ -29,6 +29,7 @@ func _physics_process(delta):
 	
 	# horizontal movement processing (left, right)
 	var direction := Input.get_axis("ui_left", "ui_right")
+	update_walk_sound(direction)
 	velocity.x = direction * speed
 	#applies movement
 	move_and_slide() 
@@ -73,3 +74,10 @@ func _input(event):
 		
 func _on_animated_sprite_2d_animation_finished():
 	is_special_action = false
+	
+func update_walk_sound(direction: float) -> void:
+	if is_on_floor() and direction != 0 and not is_special_action:
+		if not $WalkSound.playing:
+			$WalkSound.play()
+	else:
+		$WalkSound.stop()

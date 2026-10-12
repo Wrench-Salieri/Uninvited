@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dsx8s3xhlnl1f"
+path="res://.godot/imported/Closed Door.mp3-145e10294f2fb4d71f395ba6a8b7d850.mp3str"
+
+[deps]
+
+source_file="res://Audio/SoundEffects/Closed Door.mp3"
+dest_files=["res://.godot/imported/Closed Door.mp3-145e10294f2fb4d71f395ba6a8b7d850.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

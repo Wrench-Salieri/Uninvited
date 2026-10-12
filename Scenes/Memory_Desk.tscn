@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cpy66lmi4llim"]
+
+[ext_resource type="Script" uid="uid://dr8t0hvj3ip6a" path="res://Scripts/memory_desk.gd" id="1_0x1sm"]
+[ext_resource type="Texture2D" uid="uid://j61qmfa4auc1" path="res://Assets/Mansion (Inside)/MemoryQuiz.png" id="1_pk3nc"]
+[ext_resource type="PackedScene" uid="uid://iw6bh84mmg8a" path="res://Scenes/Interactable.tscn" id="2_0x1sm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r8n4v"]
+radius = 892.3704
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1900502172]
+script = ExtResource("1_0x1sm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2024521513]
+texture = ExtResource("1_pk3nc")
+
+[node name="Interactable" parent="." unique_id=176126049 instance=ExtResource("2_0x1sm")]
+interact_name = "Memory Quiz"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=124588791]
+shape = SubResource("CircleShape2D_r8n4v")

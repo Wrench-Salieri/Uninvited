@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dduvfo03nc6v5"]
+
+[ext_resource type="Texture2D" uid="uid://cp6a8b001vb68" path="res://Assets/Mansion (Outside)/Door.png" id="1_p2d0y"]
+[ext_resource type="Script" uid="uid://dulx7owrjww3m" path="res://Scenes/library_door.gd" id="2_gyc4m"]
+[ext_resource type="PackedScene" uid="uid://iw6bh84mmg8a" path="res://Scenes/Interactable.tscn" id="3_78nnm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r8n4v"]
+radius = 100.12492
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gyc4m"]
+radius = 97.862144
+
+[node name="LibraryDoor" type="Sprite2D" unique_id=204255411]
+position = Vector2(595, 206.00002)
+scale = Vector2(0.26995963, 0.2699596)
+texture = ExtResource("1_p2d0y")
+script = ExtResource("2_gyc4m")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=76181395]
+position = Vector2(-2970.815, -763.0773)
+scale = Vector2(3.7042577, 3.7042582)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=431835062]
+position = Vector2(800.0001, 284)
+shape = SubResource("CircleShape2D_r8n4v")
+
+[node name="Interactable" parent="." unique_id=176126049 instance=ExtResource("3_78nnm")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1873366802]
+position = Vector2(-11.113281, 285.22778)
+scale = Vector2(3.7042577, 3.7042582)
+shape = SubResource("CircleShape2D_gyc4m")

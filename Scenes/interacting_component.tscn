@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://drwiv8bfw4nle"]
+
+[ext_resource type="FontFile" uid="uid://bi3qu8y4ukce0" path="res://Assets/Outside/Nightmare 5.ttf" id="1_hkgi3"]
+[ext_resource type="Script" uid="uid://drjqbqi3vcg67" path="res://Scripts/interacting_component.gd" id="1_nsw6d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r8n4v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r8n4v"]
+font = ExtResource("1_hkgi3")
+font_size = 60
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="InteractingComponent" type="Node2D" unique_id=1069117959]
+script = ExtResource("1_nsw6d")
+
+[node name="InteractRange" type="Area2D" parent="." unique_id=1100583508]
+position = Vector2(0, -0.99999994)
+scale = Vector2(12.9392605, 15.538922)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractRange" unique_id=204857454]
+shape = SubResource("CircleShape2D_r8n4v")
+
+[node name="InteractLabel" type="Label" parent="." unique_id=1663701033]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -200.0
+offset_right = 48.0
+offset_bottom = -177.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_r8n4v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="area_entered" from="InteractRange" to="." method="_on_interact_range_area_entered"]
+[connection signal="area_exited" from="InteractRange" to="." method="_on_interact_range_area_exited"]

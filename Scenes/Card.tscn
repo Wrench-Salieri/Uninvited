@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dint8tsvcdtb0"]
+
+[ext_resource type="Script" uid="uid://ii4n0kge1oro" path="res://Scripts/Card.gd" id="1_hvyik"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8n4v"]
+size = Vector2(143.5, 113.5)
+
+[node name="Area2D" type="Area2D" unique_id=1710407129]
+script = ExtResource("1_hvyik")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1423179636]
+position = Vector2(-40.720596, -35.500004)
+scale = Vector2(0.65196073, 0.65196073)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1875766206]
+position = Vector2(-38.75, -38.75)
+shape = SubResource("RectangleShape2D_r8n4v")
