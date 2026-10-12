@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Uninvited"
-run/main_scene="uid://c6uu7ocgyya0j"
+run/main_scene="uid://c5f423k7pqty2"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [display]

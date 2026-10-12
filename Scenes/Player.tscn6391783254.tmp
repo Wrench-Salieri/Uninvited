@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://c8pgk3mvgsbv8"]
+
+[ext_resource type="Script" uid="uid://cbjpap2hd07gf" path="res://Scripts/Player.gd" id="1_52ee3"]
+[ext_resource type="Texture2D" uid="uid://cmo1v8clc8l4m" path="res://Assets/Player/player_kick.png" id="2_ksbbd"]
+[ext_resource type="Texture2D" uid="uid://dnnb0fw430m6u" path="res://Assets/Player/player_duck.png" id="2_yoq75"]
+[ext_resource type="Texture2D" uid="uid://de0cs3w1siwn" path="res://Assets/Player/player_hurt.png" id="3_glx4g"]
+[ext_resource type="Texture2D" uid="uid://c6c420xirxibc" path="res://Assets/Player/player_fall.png" id="3_ksbbd"]
+[ext_resource type="Texture2D" uid="uid://mbmby0a0wjyk" path="res://Assets/Noel/ClimbStairs/Stairs1.png" id="3_lslt6"]
+[ext_resource type="Texture2D" uid="uid://cf5og36bqkepw" path="res://Assets/Noel/ClimbStairs/Stairs2.png" id="4_ulo2v"]
+[ext_resource type="Texture2D" uid="uid://dgpkc6oh7iy5q" path="res://Assets/Noel/ClimbStairs/Stairs3.png" id="5_1iu4k"]
+[ext_resource type="Texture2D" uid="uid://brqw80bfngp2m" path="res://Assets/Noel/Idle/Idle1.png" id="7_yoq75"]
+[ext_resource type="Texture2D" uid="uid://bawcb1wdf4sts" path="res://Assets/Noel/Walk/walk.png" id="8_bhhdu"]
+[ext_resource type="Texture2D" uid="uid://dp1ht785fqqjg" path="res://Assets/Noel/Idle/Idle2.png" id="8_yoq75"]
+[ext_resource type="Texture2D" uid="uid://ch0jmrkbogfjc" path="res://Assets/Noel/Idle/Idle4.png" id="9_ksbbd"]
+[ext_resource type="Texture2D" uid="uid://d2m7hdb0n037" path="res://Assets/Noel/Jump/Jump.png" id="12_miouo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1ghu"]
+size = Vector2(129, 261)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3h8g"]
+atlas = ExtResource("12_miouo")
+region = Rect2(0, 0, 553, 612)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e7my"]
+atlas = ExtResource("12_miouo")
+region = Rect2(553, 0, 553, 612)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_megsn"]
+atlas = ExtResource("8_bhhdu")
+region = Rect2(0, 0, 428, 604)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yoq75"]
+atlas = ExtResource("8_bhhdu")
+region = Rect2(428, 0, 428, 604)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksbbd"]
+atlas = ExtResource("8_bhhdu")
+region = Rect2(856, 0, 428, 604)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glx4g"]
+atlas = ExtResource("8_bhhdu")
+region = Rect2(1284, 0, 428, 604)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ulo2v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ksbbd")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lslt6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ulo2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1iu4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ulo2v")
+}],
+"loop": 1,
+"name": &"climb_stairs",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_glx4g")
+}],
+"loop": 0,
+"name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yoq75")
+}],
+"loop": 1,
+"name": &"duck",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ksbbd")
+}],
+"loop": 1,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_yoq75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yoq75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ksbbd")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3h8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1e7my")
+}],
+"loop": 0,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_megsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yoq75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksbbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glx4g")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_0ci4d"]
+length = 40.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1690861100]
+script = ExtResource("1_52ee3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=163016382]
+position = Vector2(-90.5, -157.5)
+shape = SubResource("RectangleShape2D_m1ghu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=359929321]
+position = Vector2(-87.5, -155.04385)
+scale = Vector2(0.4883041, 0.4883041)
+sprite_frames = SubResource("SpriteFrames_ulo2v")
+animation = &"jump"
+frame = 1
+frame_progress = 1.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1851636538]
+offset = Vector2(0, -240)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_bottom_margin = 0.0
+
+[node name="AutoClimb" type="CollisionShape2D" parent="." unique_id=841920668]
+position = Vector2(-34, -27)
+shape = SubResource("SeparationRayShape2D_0ci4d")
+
+[node name="StairChecker" type="Node2D" parent="." unique_id=158919631]
+
+[node name="DetectStair" type="RayCast2D" parent="StairChecker" unique_id=1692139581]
+unique_name_in_owner = true
+position = Vector2(-26, -41)
+exclude_parent = false
+target_position = Vector2(20, 0)
+
+[node name="DetectWall" type="RayCast2D" parent="StairChecker" unique_id=752471907]
+unique_name_in_owner = true
+position = Vector2(-26, -233)
+exclude_parent = false
+target_position = Vector2(20, 0)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

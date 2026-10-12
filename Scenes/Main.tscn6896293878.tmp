@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://c6uu7ocgyya0j"]
+
+[ext_resource type="Texture2D" uid="uid://cmqviyprmwxxb" path="res://Assets/Background_Outside.png" id="1_kln2b"]
+[ext_resource type="PackedScene" uid="uid://c8pgk3mvgsbv8" path="res://Scenes/Player.tscn" id="1_r150o"]
+[ext_resource type="Texture2D" uid="uid://c41kry8raiir2" path="res://Assets/Black-Stairs-Transparent(1).png" id="5_pbw6q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1ghu"]
+size = Vector2(1152, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyxby"]
+size = Vector2(368.636, 474.07373)
+
+[node name="Main" type="Node2D" unique_id=555927422]
+position = Vector2(566, 322)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=858781638]
+offset_left = -562.0
+offset_top = -323.0
+offset_right = 590.0
+offset_bottom = 325.0
+texture = ExtResource("1_kln2b")
+metadata/_edit_use_anchors_ = true
+
+[node name="Player" parent="." unique_id=1690861100 instance=ExtResource("1_r150o")]
+position = Vector2(-56, 235)
+scale = Vector2(0.5, 0.5)
+
+[node name="Floor" type="Sprite2D" parent="." unique_id=1189116217]
+position = Vector2(11, 272)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor" unique_id=185796729]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D" unique_id=208367393]
+position = Vector2(-1, -37.5)
+shape = SubResource("RectangleShape2D_m1ghu")
+
+[node name="BlackStairsTransparent" type="Sprite2D" parent="." unique_id=230597459]
+position = Vector2(337, 196.99998)
+scale = Vector2(0.05437497, 0.038927548)
+texture = ExtResource("5_pbw6q")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BlackStairsTransparent" unique_id=1717347825]
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="BlackStairsTransparent/StaticBody2D" unique_id=1231477485]
+position = Vector2(472.72656, -558.7295)
+shape = SubResource("RectangleShape2D_iyxby")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="BlackStairsTransparent/StaticBody2D" unique_id=172298000]
+position = Vector2(109.08984, -203.17383)
+shape = SubResource("RectangleShape2D_iyxby")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BlackStairsTransparent/StaticBody2D" unique_id=530165959]
+position = Vector2(-254.5459, 169.31152)
+shape = SubResource("RectangleShape2D_iyxby")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlackStairsTransparent/StaticBody2D" unique_id=1491240179]
+position = Vector2(-620.6831, 524.86914)
+shape = SubResource("RectangleShape2D_iyxby")

@@ -1,96 +1,148 @@
 [gd_scene format=3 uid="uid://c6uu7ocgyya0j"]
 
+[ext_resource type="Texture2D" uid="uid://yd8kjfcrqi7y" path="res://Assets/Outside/Background_Outside.png" id="1_kln2b"]
 [ext_resource type="PackedScene" uid="uid://c8pgk3mvgsbv8" path="res://Scenes/Player.tscn" id="1_r150o"]
-[ext_resource type="Texture2D" uid="uid://bcvjkggdtnp0c" path="res://Assets/Background.png" id="2_idj7w"]
-[ext_resource type="Texture2D" uid="uid://hc1ql5xryufa" path="res://Assets/Floor.png" id="2_kln2b"]
-[ext_resource type="Texture2D" uid="uid://bkgx5pbjpdddu" path="res://Assets/Step.png" id="3_rgh2o"]
+[ext_resource type="Texture2D" uid="uid://cnb6ii28brolx" path="res://Assets/Mansion (Outside)/MainMansion.png" id="2_vy5pj"]
+[ext_resource type="Texture2D" uid="uid://cp6a8b001vb68" path="res://Assets/Mansion (Outside)/Door.png" id="4_bmxlf"]
+[ext_resource type="Script" uid="uid://bs7xb0vmnh13n" path="res://Scripts/Transition.gd" id="6_jw32o"]
+[ext_resource type="AudioStream" uid="uid://3jowru5avly8" path="res://Audio/εξωτερικός_χωρος.wav" id="7_jw32o"]
+[ext_resource type="Texture2D" uid="uid://dsrrbt6ke412l" path="res://Assets/Mansion (Outside)/Staircase.png" id="8_50glp"]
+[ext_resource type="Texture2D" uid="uid://bjhiwao2ntpa4" path="res://Assets/Mansion (Outside)/Pillars.png" id="9_4kpch"]
+[ext_resource type="Texture2D" uid="uid://bnviken273453" path="res://Assets/Outside/Skybox.png" id="10_bmxlf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvwwc"]
+size = Vector2(104, 643)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m1ghu"]
-size = Vector2(1152, 96)
+size = Vector2(1152, 15)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ci4d"]
-size = Vector2(96.42859, 51.785767)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qvwwc"]
+radius = 82.0
+height = 176.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyxby"]
+size = Vector2(368.636, 474.07373)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7sqm"]
+size = Vector2(2854.9768, 436.98218)
 
 [node name="Main" type="Node2D" unique_id=555927422]
-position = Vector2(566, 322)
+
+[node name="Skybox" type="Sprite2D" parent="." unique_id=381000945]
+position = Vector2(3, -631)
+scale = Vector2(2.997396, 1)
+texture = ExtResource("10_bmxlf")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=858781638]
 offset_left = -562.0
-offset_top = -326.0
+offset_top = -311.0
 offset_right = 590.0
-offset_bottom = 322.0
-texture = ExtResource("2_idj7w")
+offset_bottom = 337.0
+texture = ExtResource("1_kln2b")
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1304163434]
+offset_left = -1714.0
+offset_top = -312.0
+offset_right = -562.0
+offset_bottom = 336.0
+texture = ExtResource("1_kln2b")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=195872655]
+offset_left = 590.0
+offset_top = -310.0
+offset_right = 1742.0
+offset_bottom = 338.0
+texture = ExtResource("1_kln2b")
+metadata/_edit_use_anchors_ = true
+
+[node name="MainMansion" type="Sprite2D" parent="." unique_id=1088652893]
+position = Vector2(556, 5)
+scale = Vector2(0.15128528, 0.15128526)
+texture = ExtResource("2_vy5pj")
+
+[node name="Door" type="Sprite2D" parent="." unique_id=818165216]
+position = Vector2(444, 36.999985)
+scale = Vector2(0.18843067, 0.18843062)
+texture = ExtResource("4_bmxlf")
+
 [node name="Player" parent="." unique_id=1690861100 instance=ExtResource("1_r150o")]
-position = Vector2(-3, 236)
+position = Vector2(27, 255)
 scale = Vector2(0.5, 0.5)
-speed = 150
+
+[node name="WorldBorder" type="Sprite2D" parent="." unique_id=1044869864]
+position = Vector2(22, 544)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WorldBorder" unique_id=1118360014]
+
+[node name="RightBorder" type="CollisionShape2D" parent="WorldBorder/StaticBody2D" unique_id=2013710668]
+position = Vector2(532, -541)
+shape = SubResource("RectangleShape2D_qvwwc")
+
+[node name="LeftBorder" type="CollisionShape2D" parent="WorldBorder/StaticBody2D" unique_id=181437715]
+position = Vector2(-639, -549.5)
+shape = SubResource("RectangleShape2D_qvwwc")
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=1189116217]
 position = Vector2(11, 272)
-texture = ExtResource("2_kln2b")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Floor" unique_id=185796729]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D" unique_id=208367393]
-position = Vector2(-1, -1)
+position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_m1ghu")
 
-[node name="Step" type="Sprite2D" parent="." unique_id=1270083688]
-position = Vector2(113.44, 208)
-scale = Vector2(0.56, 0.56)
-texture = ExtResource("3_rgh2o")
+[node name="Area2D" type="Area2D" parent="." unique_id=1833855333]
+script = ExtResource("6_jw32o")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Step" unique_id=600668220]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=69448127]
+position = Vector2(440, 71)
+shape = SubResource("CapsuleShape2D_qvwwc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Step/StaticBody2D" unique_id=906292396]
-position = Vector2(-0.78601074, 0.89282227)
-shape = SubResource("RectangleShape2D_0ci4d")
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1887632836]
+stream = ExtResource("7_jw32o")
+autoplay = true
 
-[node name="Step5" type="Sprite2D" parent="." unique_id=1383408021]
-position = Vector2(-134, 208)
-scale = Vector2(0.56, 0.56)
-texture = ExtResource("3_rgh2o")
+[node name="Staircase" type="Sprite2D" parent="." unique_id=297116970]
+position = Vector2(519, 49.99999)
+scale = Vector2(0.18288808, 0.18288806)
+texture = ExtResource("8_50glp")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Step5" unique_id=612293965]
+[node name="StaticBody2D" type="StaticBody2D" parent="Staircase" unique_id=1717347825]
+position = Vector2(-995.14404, 945.93384)
+scale = Vector2(0.29731283, 0.21284904)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Step5/StaticBody2D" unique_id=1672929798]
-position = Vector2(-1.5258789e-05, -3.4689903e-05)
-shape = SubResource("RectangleShape2D_0ci4d")
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Staircase/StaticBody2D" unique_id=714973416]
+position = Vector2(459.77008, -1130.3049)
+scale = Vector2(0.99999994, 1)
+shape = SubResource("RectangleShape2D_iyxby")
 
-[node name="Step2" type="Sprite2D" parent="." unique_id=1579247533]
-position = Vector2(112, 208)
-scale = Vector2(0.56, 0.56)
-texture = ExtResource("3_rgh2o")
-offset = Vector2(100, -50)
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Staircase/StaticBody2D" unique_id=1231477485]
+position = Vector2(202.29944, -693.5962)
+shape = SubResource("RectangleShape2D_iyxby")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Step2" unique_id=2057187133]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Staircase/StaticBody2D" unique_id=172298000]
+position = Vector2(-73.563354, -256.8875)
+shape = SubResource("RectangleShape2D_iyxby")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Step2/StaticBody2D" unique_id=39482659]
-position = Vector2(100.00002, -49.999977)
-shape = SubResource("RectangleShape2D_0ci4d")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Staircase/StaticBody2D" unique_id=530165959]
+position = Vector2(-367.81598, 128.44377)
+shape = SubResource("RectangleShape2D_iyxby")
 
-[node name="Step3" type="Sprite2D" parent="." unique_id=1457442724]
-position = Vector2(167, 179)
-scale = Vector2(0.56, 0.56)
-texture = ExtResource("3_rgh2o")
-offset = Vector2(100, -50)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Staircase/StaticBody2D" unique_id=1491240179]
+position = Vector2(-620.6831, 524.86914)
+shape = SubResource("RectangleShape2D_iyxby")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Step3" unique_id=1542289838]
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Staircase/StaticBody2D" unique_id=1788621641]
+position = Vector2(4041.3828, -1592.7012)
+scale = Vector2(2.4252884, 1.0875521)
+shape = SubResource("RectangleShape2D_x7sqm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Step3/StaticBody2D" unique_id=320654397]
-position = Vector2(98.214294, -49.999977)
-shape = SubResource("RectangleShape2D_0ci4d")
+[node name="Pillars" type="Sprite2D" parent="." unique_id=446347316]
+position = Vector2(555, 6.000004)
+scale = Vector2(0.15100805, 0.15100807)
+texture = ExtResource("9_4kpch")
 
-[node name="Step4" type="Sprite2D" parent="." unique_id=2079340614]
-position = Vector2(221, 151)
-scale = Vector2(0.56, 0.56)
-texture = ExtResource("3_rgh2o")
-offset = Vector2(100, -50)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Step4" unique_id=1191543824]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Step4/StaticBody2D" unique_id=1500622474]
-position = Vector2(100.00003, -49.999977)
-shape = SubResource("RectangleShape2D_0ci4d")
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

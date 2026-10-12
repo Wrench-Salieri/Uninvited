@@ -1,42 +1,50 @@
 extends CharacterBody2D
 
-
 @export var speed = 100
 @export var gravity = 200
 @export var jump_height = -100
+@export var coyote_time: float = 0.1
+@export var jump_buffer_time: float = 0.1
+@export var next_to_stair = false
 
-var is_attacking = false
-var is_climbing = false
+var coyote_timer: float = 0.0
+var jump_buffer_timer: float = 0.0
+var is_special_action = false
+
 
 #movement and physics
 func _physics_process(delta):
-	# vertical movement velocity (down)
-	velocity.y += gravity * delta
+	if not is_on_floor():
+		velocity.y += gravity * delta
+		coyote_timer -= delta
+	else:
+		coyote_timer = coyote_time
+
+	# vertical movement processing (up)
+	if Input.is_action_just_pressed("ui_jump") and is_on_floor():
+		velocity.y = jump_height
+		coyote_timer = 0.0
+		if velocity.y > 0:
+			velocity += gravity * delta * 1.5
+	
 	# horizontal movement processing (left, right)
-	horizontal_movement()
+	var direction := Input.get_axis("ui_left", "ui_right")
+	velocity.x = direction * speed
 	#applies movement
 	move_and_slide() 
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if !is_attacking:
+	if !is_special_action:
 		player_animation()
-		
 	if direction and velocity.y >=0.0:
-		var next_to_stair = not %DetectWall.is_colliding() and %DetectStair.is_colliding()
+		next_to_stair = not %DetectWall.is_colliding() and %DetectStair.is_colliding()
 		$AutoClimb.disabled = not next_to_stair
-	
-func horizontal_movement():
-	# if keys are pressed it will return 1 for ui_right, -1 for ui_left, and 0 for neither
-	var horizontal_input = Input.get_action_strength("ui_right") -  Input.get_action_strength("ui_left")
-	# horizontal velocity which moves player left or right based on input
-	velocity.x = horizontal_input * speed
 
 func player_animation():
 	# for left
-	if Input.is_action_pressed("ui_left") || Input.is_action_just_released("ui_jump"):
+	if Input.is_action_pressed("ui_left") || Input.is_action_just_released("ui_jump") and is_on_floor():
 		$AnimatedSprite2D.flip_h = true
 		$AnimatedSprite2D.play("walk")
 	# for left
-	if Input.is_action_pressed("ui_right") || Input.is_action_just_released("ui_jump"):
+	if Input.is_action_pressed("ui_right") || Input.is_action_just_released("ui_jump") and is_on_floor():
 		$AnimatedSprite2D.flip_h = false
 		$AnimatedSprite2D.play("walk")
 	# idle
@@ -45,23 +53,23 @@ func player_animation():
 	
 func _input(event):
 	if event.is_action_pressed("ui_attack"):
-		is_attacking = true
+		is_special_action = true
 		$AnimatedSprite2D.play("attack")
 	
 	if event.is_action_pressed("ui_jump") and is_on_floor():
+		is_special_action = true
 		velocity.y = jump_height
+		velocity.x = speed
 		$AnimatedSprite2D.play("jump")
 		$AutoClimb.disabled = true
-	
-	if is_climbing == true:
-		if event.is_action_pressed("ui_up"):
-			$AnimatedSprite2D.play("climb")
-			gravity = 100
-			velocity.y = -200
 	else:
 		gravity = 200
-		is_climbing = false	
+	
+	#if next_to_stair == true:
+		#is_special_action = true
+		#$AnimatedSprite2D.play("climb_stairs")
+	#else:
+		#is_special_action = false
 		
 func _on_animated_sprite_2d_animation_finished():
-	is_attacking = false
-	is_climbing = false
+	is_special_action = false

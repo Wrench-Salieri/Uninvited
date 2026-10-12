@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://wkmc14g3ywun"]
+
+[ext_resource type="Texture2D" uid="uid://cyjg0fgcbhrx" path="res://Assets/Mansion (Inside)/Walls.png" id="1_1htbe"]
+[ext_resource type="PackedScene" uid="uid://c8pgk3mvgsbv8" path="res://Scenes/Player.tscn" id="1_c3dy0"]
+
+[node name="Inside" type="Node2D" unique_id=1649162380]
+
+[node name="Walls" type="Sprite2D" parent="." unique_id=1141219921]
+position = Vector2(-484, 36)
+scale = Vector2(0.46331528, 0.46331525)
+texture = ExtResource("1_1htbe")
+
+[node name="Player" parent="." unique_id=1690861100 instance=ExtResource("1_c3dy0")]
+position = Vector2(-479, 252)
+scale = Vector2(0.5, 0.5)
